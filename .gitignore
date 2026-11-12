@@ -1,0 +1,4 @@
+code/vendor/
+__pycache__/
+*.aux
+*.log.tmp

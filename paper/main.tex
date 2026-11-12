@@ -1,0 +1,452 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1.1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\Li}{\operatorname{Li}}
+
+\hypersetup{pdftitle={Critical Derrida-Retaux recursions with a different survival constant},pdfauthor={Yitzchak Shmalo}}
+
+\title[Critical Derrida--Retaux recursions]{Critical Derrida--Retaux recursions with a different survival constant}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\email{yitzchak.shmalo@gmail.com}
+\date{November 2026}
+\subjclass[2020]{60J80, 60E05, 82B44}
+\keywords{Derrida--Retaux recursion, critical case, survival probability, heavy tails, depinning}
+
+\begin{document}
+\begin{abstract}
+For an integer $m\ge2$ the Derrida--Retaux recursion is $X_{n+1}=(X_n^{(1)}+\dots+X_n^{(m)}-1)^+$, where $X_n^{(1)},\dots,X_n^{(m)}$ are independent copies of $X_n$, and the initial law is critical when $(m-1)\EE[X_0m^{X_0}]=\EE[m^{X_0}]<\infty$. It has been conjectured that in the critical case $n^2\PP(X_n>0)\to4/(m-1)^2$. We show that criticality alone does not imply this. For every $m\ge2$ there is a nonconstant critical law with $\limsup_n n^2\PP(X_n>0)=\infty$, and it can be chosen with a finite tilted moment $\EE[X_0^rm^{X_0}]$ of any prescribed order $r<2$. For the critical laws with $\PP(X_0=k)$ proportional to $m^{-k}k^{-b}$, $2<b<4$, we prove that $\liminf_n n^2\PP(X_n>0)\le b(b-2)/(2(m-1)^2)\le\limsup_n n^2\PP(X_n>0)$, so a limit, if it exists, is $b(b-2)/(2(m-1)^2)$. The same argument shows that under a finite third tilted moment the only possible limit is $4/(m-1)^2$; whether the limit exists in that case remains open.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+Fix an integer $m\ge2$ and a random variable $X_0$ with values in $\mathbb Z_+=\{0,1,2,\dots\}$. The Derrida--Retaux recursion is
+\begin{equation}\label{eq:rec}
+X_{n+1}=\bigl(X_n^{(1)}+\dots+X_n^{(m)}-1\bigr)^+,\qquad n\ge0,
+\end{equation}
+where $X_n^{(1)},\dots,X_n^{(m)}$ are independent copies of $X_n$. Equivalently, $X_n$ is the value at the root of the complete $m$-ary tree of depth $n$ when independent copies of $X_0$ are placed at the leaves and each internal vertex receives the sum of the values of its $m$ children minus one, truncated at zero. The recursion was studied by Collet, Eckmann, Glaser and Martin~\cite{CEGM} and by Derrida and Retaux~\cite{DR} as a simplified model of the depinning transition, and it has been studied in detail since; see the survey of open questions by Chen, Derrida, Hu, Lifshits and Shi~\cite{CDHLS}.
+
+Write
+\[
+q_n=\PP(X_n>0),\qquad G_n(s)=\EE[s^{X_n}],\qquad u_n=G_n(m)-1,\qquad \Pi_n=\prod_{j=0}^{n-1}G_j(m)^{m-1}.
+\]
+The initial law is \emph{critical} if
+\begin{equation}\label{eq:crit}
+(m-1)\,\EE\bigl[X_0m^{X_0}\bigr]=\EE\bigl[m^{X_0}\bigr]<\infty .
+\end{equation}
+For $m=2$ the constant law $X_0\equiv1$ satisfies~\eqref{eq:crit} and $X_n\equiv1$ for every $n$, so a nondegeneracy condition is needed; every law in our results is nonconstant. Collet et al.~\cite{CEGM} and Derrida and Retaux~\cite{DR} predicted, and Chen, Derrida, Hu, Lifshits and Shi~\cite[Conjecture~1]{CDHLS} conjectured for every $m\ge2$, that in the critical case
+\begin{equation}\label{eq:conj}
+n^2q_n\to\frac{4}{(m-1)^2}.
+\end{equation}
+Derrida and Shi~\cite[Section~2.1, equations~(13)--(14)]{DS} stated the prediction $4$ for $m=2$ under a finite third tilted moment $\EE[X_0^3m^{X_0}]<\infty$, and the prediction $b(b-2)/2$ when $\PP(X_0=k)$ behaves like a constant times $2^{-k}k^{-b}$ with $2<b\le4$.
+
+The following results are known for the recursion~\eqref{eq:rec} with deterministic offspring number $m$. For every nonconstant critical law $G_n(m)\to1$~\cite[Theorem~2]{CDHLS}, and under a finite third tilted moment $\Pi_n$ is bounded above and below by constant multiples of $n^2$~\cite[Propositions~1 and~2]{CDHLS}. Chen, Hu and Shi~\cite[Theorem~1.2]{CHS22} proved $q_n=n^{-2+o(1)}$ when $\EE[t^{X_0}]<\infty$ for some $t>m$. Chen and Shi~\cite[Theorem~1.1]{CS} proved that $\Pi_n$ is of order $n^{b-2}$ when $\PP(X_0=k)\sim c_0m^{-k}k^{-b}$ with $2<b<4$. Near criticality, the free energy has an essential singularity with exponent $1/2$ under a finite third tilted moment and exponent $1/(b-2)$ for tilted power tails~\cite[Theorems~1.1 and~1.2]{CDDHLS}; see also Hu and Shi~\cite{HS}. Chen, Hu and Shi~\cite{CHS24} proved the dual conjecture in the subcritical regime. For the generalized model with geometric offspring numbers and geometric-type initial laws, Li and Zhang~\cite[Theorem~1.3]{LZ} proved $q_n\sim2/((m-1)^2n^2)$; that model differs from~\eqref{eq:rec}.
+
+We show that the criticality condition~\eqref{eq:crit} alone does not imply~\eqref{eq:conj}.
+
+\begin{theorem}[sparse tails]\label{thm:sparse}
+Fix $1\le\rho<2$ and put
+\[
+k_j=2^j,\qquad a_j=\frac{1}{j^2k_j^{\rho}},\qquad A=\sum_{j\ge1}\bigl((m-1)k_j-1\bigr)a_j,\qquad T=\sum_{j\ge1}m^{-k_j}a_j,\qquad c=(A+T)^{-1}.
+\]
+The law
+\begin{equation}\label{eq:sparse}
+\PP(X_0=0)=cA,\qquad \PP(X_0=k_j)=c\,m^{-k_j}a_j\quad(j\ge1),
+\end{equation}
+with no other atoms, is nonconstant and critical, and $\EE[X_0^rm^{X_0}]<\infty$ if and only if $0<r\le\rho$. For $n_j=k_j-1$,
+\begin{equation}\label{eq:spike}
+q_{n_j}\ \ge\ 1-\exp\Bigl(-\frac{c}{m\,j^2k_j^{\rho}}\Bigr),
+\end{equation}
+and consequently $n_j^2q_{n_j}\to\infty$ and $\limsup_{n\to\infty}n^2q_n=\infty$. For $\rho=1$,
+\begin{equation}\label{eq:rho1}
+q_{n_j}\ \ge\ \frac{c+o(1)}{m\,n_j\,(\log_2(n_j+1))^2},
+\end{equation}
+so the statement $q_n=n^{-2+o(1)}$ also fails for this law.
+\end{theorem}
+
+The law~\eqref{eq:sparse} has finite polynomial moments of every order and $\EE[t^{X_0}]=\infty$ for every $t>m$, so Theorem~\ref{thm:sparse} does not contradict~\cite[Theorem~1.2]{CHS22}. The proof compares the root with a single leaf. Chen, Hu and Shi use the stronger inequality $X_n\ge\sum_{i=1}^{m^n}\mathbf 1_{\{X_{0,i}\ge n+1\}}$, where $X_{0,i}$ are the leaf values, in~\cite[Remark~1.2]{CHS24}; the point of Theorem~\ref{thm:sparse} is the critical law~\eqref{eq:sparse}, whose atoms are spaced so that the leaf bound applies at infinitely many depths.
+
+For regular tilted tails the constant changes. The second result is a constraint on $q_n$ in terms of the growth of $\Pi_n$.
+
+\begin{theorem}\label{thm:constraint}
+Suppose the initial law is critical, $G_n(m)\to1$, and $\log\Pi_n/\log n\to\beta\in(0,\infty)$. Then
+\begin{equation}\label{eq:bracket}
+\liminf_{n\to\infty}n^2q_n\ \le\ \frac{\beta(\beta+2)}{2(m-1)^2}\ \le\ \limsup_{n\to\infty}n^2q_n .
+\end{equation}
+In particular, if $n^2q_n$ converges in $[0,\infty]$, its limit is $\beta(\beta+2)/(2(m-1)^2)$.
+\end{theorem}
+
+\begin{theorem}[tilted power tails]\label{thm:power}
+Let $2<b<4$, and put
+\[
+L_b=\Li_b(1/m)=\sum_{k\ge1}\frac{m^{-k}}{k^b},\qquad A_b=(m-1)\zeta(b-1)-\zeta(b),\qquad c_b=(A_b+L_b)^{-1}.
+\]
+The law
+\begin{equation}\label{eq:power}
+\PP(X_0=0)=c_bA_b,\qquad \PP(X_0=k)=c_b\,m^{-k}k^{-b}\quad(k\ge1)
+\end{equation}
+is nonconstant and critical, $\EE[X_0^rm^{X_0}]<\infty$ exactly when $r<b-1$, and
+\begin{equation}\label{eq:powerbracket}
+\liminf_{n\to\infty}n^2q_n\ \le\ \frac{b(b-2)}{2(m-1)^2}\ \le\ \limsup_{n\to\infty}n^2q_n .
+\end{equation}
+Since $b(b-2)<8$, $n^2q_n$ does not converge to $4/(m-1)^2$. Given $0<r<3$, the choice $\max(2,r+1)<b<4$ gives a law with a finite $r$-th tilted moment for which~\eqref{eq:conj} fails.
+\end{theorem}
+
+For $b=3$ the bracket~\eqref{eq:powerbracket} gives $\liminf n^2q_n\le3/2$ for $m=2$ and $\liminf n^2q_n\le3/8$ for $m=3$, against $4$ and $1$ in~\eqref{eq:conj}. The inequality $\liminf n^2q_n\le3/2$ for $m=2$ was proved in~\cite{Sh} for a law with the same tail and no atom at $1$; Theorem~\ref{thm:power} adds the lower half of the bracket, all $m\ge2$ and all $2<b<4$.
+
+\begin{corollary}\label{cor:third}
+If the initial law is nonconstant and critical and $\EE[X_0^3m^{X_0}]<\infty$, then
+\[
+\liminf_{n\to\infty}n^2q_n\ \le\ \frac{4}{(m-1)^2}\ \le\ \limsup_{n\to\infty}n^2q_n ,
+\]
+so if $n^2q_n$ has a limit, the limit is $4/(m-1)^2$.
+\end{corollary}
+
+Corollary~\ref{cor:third} does not show that the limit exists. Under a finite third tilted moment, the conjecture~\eqref{eq:conj} is open.
+
+\subsection*{Method}
+Theorem~\ref{thm:sparse} follows from the leaf comparison and needs no asymptotic input. Theorems~\ref{thm:constraint} and~\ref{thm:power} rest on the exact identity $u_{n+1}=H(u_n)-d_n$, with $H(x)=((1+x)^m-1)/m$ and $d_n$ of order $(m-1)q_n$, which ties the decay of $u_n$ to the survival probabilities. A comparison of $u_n$ with the barrier $A/n$ (Lemma~\ref{lem:barrier}) turns a bound on $n^2q_n$ into a bound on the growth exponent of $\Pi_n$, and the published estimates on $\Pi_n$ then fix the bracket.
+
+\subsection*{Map of the paper}
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Section & Content & Results\\
+\midrule
+\ref{sec:sparse} & sparse critical laws & Theorem~\ref{thm:sparse}\\
+\ref{sec:gf} & generating-function identities, the barrier lemma & \eqref{eq:ufix}, Lemma~\ref{lem:barrier}\\
+\ref{sec:proofs} & proofs for regular tails & Theorems~\ref{thm:constraint}, \ref{thm:power}, Corollary~\ref{cor:third}\\
+\ref{sec:numerics} & certified computation of $n^2q_n$ & Proposition~\ref{prop:trunc}, Tables~\ref{tab:spikes}--\ref{tab:cert}\\
+Appendix~\ref{app:notation} & notation & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Conventions}
+Throughout, $m\ge2$ is fixed, a law means a probability law on $\mathbb Z_+$, and the \emph{tilted moment} of order $r$ is $\EE[X_0^rm^{X_0}]$. We write $a_n\sim b_n$ if $a_n/b_n\to1$, and $O(\cdot)$ and $o(\cdot)$ refer to $n\to\infty$ (or $j\to\infty$) with $m$ and the initial law fixed; the implied constants, and the constants $c_0,c_1,c_2$ quoted from the literature, depend only on $m$ and the initial law. $\mathbf 1_E$ is the indicator of an event $E$, and $\mathcal L(X)$ is the law of a random variable $X$. For laws $\mu,\nu$ we write $\mu\le_{\mathrm{st}}\nu$ if $\mu([k,\infty))\le\nu([k,\infty))$ for every $k$.
+
+\section{Sparse critical laws}\label{sec:sparse}
+\begin{proof}[Proof of Theorem~\ref{thm:sparse}]
+Since $k_j\ge2$, every term in the series for $A$ is positive, and
+\[
+0<A\le(m-1)\sum_{j\ge1}j^{-2}<\infty,\qquad 0<T<\infty .
+\]
+Hence~\eqref{eq:sparse} puts positive mass at $0$ and at every $k_j$, and the masses sum to $c(A+T)=1$. Since $A+\sum_ja_j=(m-1)\sum_jk_ja_j$,
+\[
+\EE[m^{X_0}]=c\Bigl(A+\sum_ja_j\Bigr)=c(m-1)\sum_jk_ja_j,\qquad \EE[X_0m^{X_0}]=c\sum_jk_ja_j=c\sum_j\frac{2^{j(1-\rho)}}{j^2}<\infty,
+\]
+which is~\eqref{eq:crit}. For $r>0$,
+\[
+\EE[X_0^rm^{X_0}]=c\sum_{j\ge1}\frac{2^{j(r-\rho)}}{j^2},
+\]
+which is finite if $r\le\rho$ and infinite if $r>\rho$, since then the terms do not tend to zero. For $t>m$ the terms $c(t/m)^{2^j}/(j^22^{j\rho})$ of $\EE[t^{X_0}]$ do not tend to zero either.
+
+Realize $X_n$ on the complete $m$-ary tree of depth $n$ with independent copies of $X_0$ at the leaves. If a leaf has value $k$, its ancestor $h$ levels above it has value at least $(k-h)^+$: the other children have nonnegative values, and at most one unit is subtracted at each level. In particular, a leaf with value $k_j$ forces a positive value at the root of the tree of depth $n_j=k_j-1$. This tree has $m^{n_j}$ independent leaves, so
+\[
+q_{n_j}\ \ge\ 1-\bigl(1-\PP(X_0=k_j)\bigr)^{m^{n_j}}\ \ge\ 1-\exp\bigl(-m^{n_j}\PP(X_0=k_j)\bigr)=1-\exp\Bigl(-\frac{c}{m\,j^2k_j^{\rho}}\Bigr),
+\]
+which is~\eqref{eq:spike}. The exponent tends to zero, so
+\[
+n_j^2q_{n_j}\ \ge\ (1+o(1))\,\frac cm\,\frac{(2^j-1)^2}{j^2\,2^{j\rho}}\to\infty,
+\]
+because $\rho<2$. For $\rho=1$ we have $k_j=n_j+1$ and $j=\log_2(n_j+1)$, and the same estimate gives~\eqref{eq:rho1}. Then $\log q_{n_j}\ge-\log n_j-O(\log\log n_j)$, which is incompatible with $\log q_n/\log n\to-2$.
+\end{proof}
+
+For $\rho=1$ the constant is $A=(m-1)\zeta(2)-\Li_2(1/2)$, and the series for $T$ converges doubly exponentially.
+
+\section{Generating functions and a barrier lemma}\label{sec:gf}
+Conditioning on the sum $R$ of the $m$ independent copies in~\eqref{eq:rec}, and using $s^{(R-1)^+}=s^{R-1}+(1-s^{-1})\mathbf 1_{\{R=0\}}$, we obtain for every $s>0$ at which the expectations are finite
+\begin{equation}\label{eq:gf}
+G_{n+1}(s)=\frac{G_n(s)^m}{s}+\Bigl(1-\frac1s\Bigr)G_n(0)^m .
+\end{equation}
+Differentiating at $s=m$, where the derivative is the left derivative and exists by monotone convergence, gives
+\begin{equation}\label{eq:critprop}
+(m-1)mG_{n+1}'(m)-G_{n+1}(m)=\bigl((m-1)mG_n'(m)-G_n(m)\bigr)\,G_n(m)^{m-1} .
+\end{equation}
+Since~\eqref{eq:crit} says that the bracket vanishes for $n=0$, every $X_n$ satisfies~\eqref{eq:crit}. Put
+\[
+H(x)=\frac{(1+x)^m-1}{m},\qquad d_n=\frac{m-1}{m}\Bigl(1-(1-q_n)^m\Bigr).
+\]
+Since $G_n(0)=1-q_n$, equation~\eqref{eq:gf} at $s=m$ reads
+\begin{equation}\label{eq:ufix}
+u_{n+1}=H(u_n)-d_n .
+\end{equation}
+For $x\ge0$ we have $H'(x)=(1+x)^{m-1}\ge1$ and
+\begin{equation}\label{eq:Hexp}
+H(x)=x+\frac{m-1}{2}x^2+O(x^3)\qquad(x\to0),
+\end{equation}
+and if $q_n\to0$ then
+\begin{equation}\label{eq:dn}
+d_n=(m-1)q_n\bigl(1+O(q_n)\bigr).
+\end{equation}
+
+\begin{lemma}\label{lem:barrier}
+Let $u_n\ge0$ satisfy~\eqref{eq:ufix} and $u_n\to0$, put $\alpha=(m-1)/2$, and fix $A>0$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $\limsup_n n^2d_n<A+\alpha A^2$, then $u_n<A/n$ for all large $n$.
+\item If $\liminf_n n^2d_n>A+\alpha A^2$, then $u_n>A/n$ for all large $n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Put $w_n=A/n$. By~\eqref{eq:Hexp},
+\[
+H(w_n)-w_{n+1}=\frac{A+\alpha A^2}{n^2}+O(n^{-3}).
+\]
+Under~(i) there are $\eta>0$ and $N$ with $R_n=H(w_n)-d_n-w_{n+1}\ge\eta/n^2$ for $n\ge N$. Suppose $u_j\ge w_j$ for some $j\ge N$. Since $H$ is nondecreasing,
+\[
+u_{j+1}-w_{j+1}=H(u_j)-H(w_j)+R_j\ \ge\ \frac{\eta}{j^2}.
+\]
+As $H'\ge1$, the difference $u_k-w_k$ is nondecreasing in $k\ge j+1$, so $u_k-w_k\ge\eta/j^2$ for every $k>j$. This contradicts $u_k\to0$ and $w_k\to0$. Hence $u_j<w_j$ for every $j\ge N$.
+
+Under~(ii) there are $\eta>0$ and $N$ with $R_n\le-\eta/n^2$ for $n\ge N$. If $u_j\le w_j$ for some $j\ge N$, then $w_{j+1}-u_{j+1}=H(w_j)-H(u_j)-R_j\ge\eta/j^2$, and the same argument gives a contradiction.
+\end{proof}
+
+\section{Proofs for regular tails}\label{sec:proofs}
+\begin{proof}[Proof of Theorem~\ref{thm:constraint}]
+Put
+\[
+C_\beta=\frac{\beta(\beta+2)}{2(m-1)^2},\qquad A_\beta=\frac{\beta}{m-1},
+\]
+so that $A_\beta+\alpha A_\beta^2=(m-1)C_\beta$. Since $m^k-1\ge m-1$ for $k\ge1$, we have $(m-1)q_n\le u_n$, and therefore $q_n\to0$.
+
+Suppose that $\liminf n^2q_n>C_\beta$. Choose $C'$ with $C_\beta<C'<\liminf n^2q_n$, and then $A>A_\beta$ so close to $A_\beta$ that $A+\alpha A^2<(m-1)C'$. By~\eqref{eq:dn}, $\liminf n^2d_n\ge(m-1)C'$, and Lemma~\ref{lem:barrier}(ii) gives $N$ with $u_n>A/n$ for $n\ge N$. Then
+\[
+\log\Pi_n=(m-1)\sum_{j<n}\log(1+u_j)\ \ge\ (m-1)\sum_{N\le j<n}\log\Bigl(1+\frac Aj\Bigr)=(m-1)A\log n+O(1),
+\]
+so $\liminf\log\Pi_n/\log n\ge(m-1)A>\beta$, a contradiction.
+
+Suppose that $\limsup n^2q_n<C_\beta$. Choose $C'$ with $\limsup n^2q_n<C'<C_\beta$, and $A\in(0,A_\beta)$ so close to $A_\beta$ that $(m-1)C'<A+\alpha A^2$. By~\eqref{eq:dn}, $\limsup n^2d_n\le(m-1)C'$, Lemma~\ref{lem:barrier}(i) gives $u_n<A/n$ for large $n$, and the same computation gives $\limsup\log\Pi_n/\log n\le(m-1)A<\beta$, a contradiction. This proves~\eqref{eq:bracket}. If $n^2q_n$ converges in $[0,\infty]$, both inequalities in~\eqref{eq:bracket} force the limit to be $C_\beta$, which lies in $(0,\infty)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:power}]
+The series converge since $b>2$, and
+\[
+A_b=\sum_{k\ge1}\bigl((m-1)k-1\bigr)k^{-b}>0,
+\]
+because every term is nonnegative and the terms with $k\ge2$ are positive. Hence all masses in~\eqref{eq:power} are positive, and they sum to $c_b(A_b+L_b)=1$. Moreover
+\[
+\EE[m^{X_0}]=c_b\bigl(A_b+\zeta(b)\bigr)=c_b(m-1)\zeta(b-1),\qquad \EE[X_0m^{X_0}]=c_b\zeta(b-1),
+\]
+which is~\eqref{eq:crit}, and for $r\ge0$
+\[
+\EE[X_0^rm^{X_0}]=c_b\sum_{k\ge1}k^{r-b},
+\]
+which is finite exactly when $r<b-1$.
+
+The law is nonconstant and critical, so $G_n(m)\to1$ by~\cite[Theorem~2]{CDHLS}. Since $\PP(X_0=k)=c_bm^{-k}k^{-b}$ for $k\ge1$, \cite[Theorem~1.1]{CS} gives constants $0<c_1\le c_2<\infty$ with $c_1n^{b-2}\le\Pi_n\le c_2n^{b-2}$. (The product in~\cite{CS} may contain one more factor than $\Pi_n$; since $G_n(m)\to1$, this does not change the exponent.) Thus $\log\Pi_n/\log n\to b-2$, and Theorem~\ref{thm:constraint} with $\beta=b-2$ gives~\eqref{eq:powerbracket}.
+
+Finally $b(b-2)<8$ for $2<b<4$, so $b(b-2)/(2(m-1)^2)<4/(m-1)^2$, and~\eqref{eq:powerbracket} excludes convergence to $4/(m-1)^2$. If $0<r<3$ and $\max(2,r+1)<b<4$, then $r<b-1$, so the $r$-th tilted moment is finite.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:third}]
+By~\cite[Theorem~2]{CDHLS}, $G_n(m)\to1$, and by~\cite[Propositions~1 and~2]{CDHLS}, $\Pi_n$ lies between constant multiples of $n^2$; as before, an extra bounded factor in the product does not change the exponent. Apply Theorem~\ref{thm:constraint} with $\beta=2$.
+\end{proof}
+
+\begin{remark}
+If $n^2q_n\to C\in(0,\infty)$, Lemma~\ref{lem:barrier} applied with barriers on both sides of the positive root of $A+\alpha A^2=(m-1)C$ shows that
+\[
+nu_n\to\frac{\sqrt{1+2(m-1)^2C}-1}{m-1}.
+\]
+This follows from the exact recursion~\eqref{eq:ufix}, without differentiating an asymptotic relation.
+\end{remark}
+
+\section{Numerical values}\label{sec:numerics}
+No proof in this paper uses computation. This section reports values of $n^2q_n$ for $m=2,3$ and $n\le10{,}000$ for six families of critical laws: the two-point laws with $\PP(X_0=k)=1/(1+((m-1)k-1)m^k)$ and $\PP(X_0=0)=1-\PP(X_0=k)$, $k\in\{2,5\}$; the geometric-type law $\PP(X_0=j)=c\,(2m)^{-j}$ for $j\ge1$, with $\PP(X_0=0)=c(2m-3)$ and $c$ fixed by normalization; the sparse law~\eqref{eq:sparse} with $\rho=1$; and the laws~\eqref{eq:power} with $b\in\{2.5,3,3.5,4\}$ ($b=4$ is outside Theorem~\ref{thm:power}).
+
+\subsection{Truncation and certified iteration}
+The law of $X_n$ is iterated on the support $\{0,\dots,K\}$: values above $K$ are replaced by zero, both initially and after every step. Let $q_n^{[K]}$ be the resulting survival probability.
+
+\begin{proposition}\label{prop:trunc}
+For every critical law,
+\begin{equation}\label{eq:trunc}
+0\ \le\ q_n-q_n^{[K]}\ \le\ m^{1/(m-1)}\,m^{-(K+1)}\,\frac{m^{n+1}-1}{m-1}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By~\eqref{eq:critprop} every $X_n$ is critical. Under the probability law $Q_n(k)=m^k\PP(X_n=k)/G_n(m)$, criticality says that the mean of $X_n$ is $1/(m-1)$, and Jensen's inequality gives $1/G_n(m)=\EE_{Q_n}[m^{-X_n}]\ge m^{-1/(m-1)}$. Hence $\PP(X_n>K)\le G_n(m)m^{-(K+1)}\le m^{1/(m-1)}m^{-(K+1)}$. Couple the two systems on the same tree. The map $(x_1,\dots,x_m)\mapsto(x_1+\dots+x_m-1)^+$ is nondecreasing and replacing a value by zero does not increase it, so by induction every truncated value is at most the corresponding original value; this gives the lower bound. If the root values differ, some vertex had a value above $K$ in the original system. A vertex whose subtree has height $j$ has the law of $X_j$, and there are $m^{n-j}$ such vertices; the union bound over all vertices gives the upper bound.
+\end{proof}
+
+We take $K=10{,}128$. For $n\le10{,}000$ the bound~\eqref{eq:trunc}, multiplied by $n^2$, is then below $6\times10^{-31}$.
+
+The certified computation stores each positive mass as $\PP(X=k)=a_k/(Sm^k)$ with $S=2^{112}$ and $a_k\in\mathbb Z_+$, raises the generating polynomial to the $m$-th power in exact integer arithmetic, and rounds each new coefficient $a_k$ down to an integer; the mass at zero is the remainder. Write $\nu_n$ for the computed law at step $n$ and $\widehat q_n=\nu_n((0,\infty))$.
+
+\begin{lemma}\label{lem:order}
+$\nu_n\le_{\mathrm{st}}\mathcal L(X_n)$ for every $n$; in particular $\widehat q_n\le q_n$.
+\end{lemma}
+
+\begin{proof}
+Let $F$ be one step of~\eqref{eq:rec} on laws. Since the update is a nondecreasing function of independent inputs, $\mu\le_{\mathrm{st}}\mu'$ implies $F\mu\le_{\mathrm{st}}F\mu'$. Deleting values above $K$ and rounding the positive masses down, with the deficit moved to zero, both produce a law whose tail sums $\mu([k,\infty))$, $k\ge1$, are no larger. Hence $\nu_0\le_{\mathrm{st}}\mathcal L(X_0)$ and $\nu_{n+1}\le_{\mathrm{st}}F\nu_n\le_{\mathrm{st}}F\mathcal L(X_n)=\mathcal L(X_{n+1})$.
+\end{proof}
+
+Lemma~\ref{lem:order} compares the computed law with the untruncated recursion. A comparison with the truncated recursion would not follow in the same way, since deletion of values above $K$ is not monotone for $\le_{\mathrm{st}}$.
+
+For the upper endpoint, let $D(\mu,\nu)=\inf\EE|m^X-m^Y|$ over couplings of $\mu$ and $\nu$. One step of~\eqref{eq:rec} multiplies $D$ by at most $M^{m-1}$, where $M$ bounds both tilted means; deletion does not increase $D$; and $|\mu((0,\infty))-\nu((0,\infty))|\le D(\mu,\nu)/(m-1)$. With $E_n$ a bound on $D$ between $\nu_n$ and the exact truncated law, rounding adds at most $(K+m)/S$ per step, so
+\[
+E_{n+1}\le\bigl(M_n+E_n\bigr)^{m-1}E_n+\frac{K+m}{S},
+\]
+where $M_n=1+\sum_ka_k/S$; the program evaluates this with upward rounding. Hence
+\[
+\widehat q_n\ \le\ q_n\ \le\ \widehat q_n+\frac{E_n}{m-1}+m^{-K}\,\frac{m^{n+1}-1}{m-1},
+\]
+where the last term is~\eqref{eq:trunc} with $m^{1/(m-1)}$ replaced by the larger rational number $m$.
+
+\subsection{Results}
+The other values were computed with double-precision fast Fourier transforms on the same truncated support; Proposition~\ref{prop:trunc} bounds their truncation error, but their rounding error is not certified. At $n=10{,}000$ they differ from certified values by at most $1.1\times10^{-5}$ in $n^2q_n$, so they are given to four decimals.
+
+\begin{table}[tbp]
+\centering
+\begin{tabular}{rrr}
+\toprule
+$n$ & $m=2$ & $m=3$\\
+\midrule
+511 & 2.667980 & 0.765918\\
+1023 & 4.308249 & 1.237578\\
+2047 & 7.110769 & 2.043243\\
+4095 & 11.942055 & 3.431991\\
+8191 & 20.344565 & 5.847179\\
+10000 & 0.055799 & 0.013951\\
+\bottomrule
+\end{tabular}
+\caption{Values of $n^2q_n$ for the sparse law~\eqref{eq:sparse} with $\rho=1$ (certified computation). The depths $n=2^j-1$ are those of Theorem~\ref{thm:sparse}.}\label{tab:spikes}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+\begin{tabular}{rlrrrr}
+\toprule
+$m$ & law & $n=1000$ & $n=5000$ & $n=10000$ & predicted\\
+\midrule
+2 & two-point, $k=2$ & 4.052334 & 4.014276 & 4.007964 & 4\\
+2 & two-point, $k=5$ & 4.0214 & 4.0081 & 4.0049 & 4\\
+2 & geometric & 4.025802 & 4.009018 & 4.005339 & 4\\
+2 & $b=2.5$ & 0.6248 & 0.6251 & 0.6251 & 0.625\\
+2 & $b=3$ & 1.500942 & 1.500487 & 1.500308 & 1.5\\
+2 & $b=3.5$ & 2.5762 & 2.5995 & 2.6062 & 2.625\\
+2 & $b=4$ & 3.5325 & 3.6107 & 3.6397 & 4\\
+3 & two-point, $k=2$ & 1.006166 & 1.001875 & 1.001076 & 1\\
+3 & two-point, $k=5$ & 1.0005 & 1.0007 & 1.0005 & 1\\
+3 & geometric & 1.001350 & 1.000914 & 1.000596 & 1\\
+3 & $b=2.5$ & 0.1563 & 0.1563 & 0.1563 & 0.15625\\
+3 & $b=3$ & 0.376433 & 0.375484 & 0.375288 & 0.375\\
+3 & $b=3.5$ & 0.6533 & 0.6546 & 0.6550 & 0.65625\\
+3 & $b=4$ & 0.9030 & 0.9176 & 0.9230 & 1\\
+\bottomrule
+\end{tabular}
+\caption{Values of $n^2q_n$. Six-decimal entries are certified; four-decimal entries are double-precision values. The last column is $4/(m-1)^2$ for the two-point and geometric laws and $b(b-2)/(2(m-1)^2)$ for the laws~\eqref{eq:power}.}\label{tab:values}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+\begin{tabular}{rll}
+\toprule
+$m$ & law & enclosure of $n^2q_n$ at $n=10{,}000$\\
+\midrule
+2 & two-point, $k=2$ & $[4.007963710799,\ 4.007963710800]$\\
+2 & geometric & $[4.005338853429,\ 4.005338853430]$\\
+2 & $b=3$ & $[1.500307923414,\ 1.500307923415]$\\
+2 & sparse, $\rho=1$ & $[0.055798605399,\ 0.055798605400]$\\
+3 & two-point, $k=2$ & $[1.001075562821,\ 1.001075562822]$\\
+3 & geometric & $[1.000595589825,\ 1.000595589826]$\\
+3 & $b=3$ & $[0.375288497543,\ 0.375288497544]$\\
+3 & sparse, $\rho=1$ & $[0.013950630440,\ 0.013950630441]$\\
+\bottomrule
+\end{tabular}
+\caption{Certified enclosures, rounded outwards to twelve decimals.}\label{tab:cert}
+\end{table}
+
+For the laws with a finite third tilted moment the values in Table~\ref{tab:values} approach $4/(m-1)^2$, and for $b=3$ they are close to $3/2$ and $3/8$. For $b=3.5$ the approach to $b(b-2)/(2(m-1)^2)$ is slower, and for $b=4$ slower still; these values do not identify the correction terms. For the sparse law the values at $n=2^j-1$ grow, as Theorem~\ref{thm:sparse} predicts, while the value at $n=10{,}000$ is small (Table~\ref{tab:spikes}).
+
+\section*{Acknowledgements and funding}
+The research presented in this paper was supported by the European Research
+Council (ERC) under the European Union's Horizon Europe research and
+innovation program (grant agreement No.~101041711), by the Simons
+Foundation as part of the Collaboration on the Mathematical and Scientific
+Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by
+the Israel Science Foundation (grant number 2258/19), and by the Israel
+Science Foundation (ISF Grant 4101/25). Computational resources were
+provided in part by Google Cloud through its education credits program
+(credit 530550103).
+
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. For more on the details behind the Brain and Math Brain, see the Math Brain paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework repository~\cite{BrainFramework}.
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and
+has a management role at Convex Nexus Capital. These entities are included
+in the funding declaration above.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November 2026 Codex (OpenAI) found the proofs of Theorems~\ref{thm:sparse}--\ref{thm:power} and Corollary~\ref{cor:third} and carried out the computations of Section~\ref{sec:numerics}. A second Codex instance reviewed the proofs, checked the literature and recomputed the certified values independently. Claude Opus~5.5 (Anthropic), working in Claude Code, wrote the paper, including the proof of Lemma~\ref{lem:order}. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\section*{Data availability}
+No result of the paper depends on computation. The \LaTeX{} source of the paper, the programs that iterate the recursion and certify the values of Section~\ref{sec:numerics}, and their outputs are available at\\ \url{https://github.com/yspennstate/derrida-retaux-survival-constant}.
+
+The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
+
+\appendix
+\section{Notation}\label{app:notation}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Symbol & Meaning & Introduced\\
+\midrule
+$m$ & number of copies in~\eqref{eq:rec} & Section~\ref{sec:intro}\\
+$q_n$ & survival probability $\PP(X_n>0)$ & Section~\ref{sec:intro}\\
+$G_n(s)$ & generating function $\EE[s^{X_n}]$ & Section~\ref{sec:intro}\\
+$u_n$ & $G_n(m)-1$ & Section~\ref{sec:intro}\\
+$\Pi_n$ & $\prod_{j<n}G_j(m)^{m-1}$ & Section~\ref{sec:intro}\\
+$k_j,a_j,A,T,c$ & parameters of the sparse law & Theorem~\ref{thm:sparse}\\
+$n_j$ & depth $k_j-1$ & Theorem~\ref{thm:sparse}\\
+$\rho$ & tail exponent of the sparse law & Theorem~\ref{thm:sparse}\\
+$\beta$ & growth exponent of $\Pi_n$ & Theorem~\ref{thm:constraint}\\
+$b,L_b,A_b,c_b$ & parameters of the power-tail law & Theorem~\ref{thm:power}\\
+$H,d_n$ & terms of the recursion~\eqref{eq:ufix} & Section~\ref{sec:gf}\\
+$\alpha$ & $(m-1)/2$ & Lemma~\ref{lem:barrier}\\
+$w_n,R_n$ & barrier $A/n$ and its defect & proof of Lemma~\ref{lem:barrier}\\
+$C_\beta,A_\beta$ & constants in the proof of Theorem~\ref{thm:constraint} & Section~\ref{sec:proofs}\\
+$K$ & support cutoff & Section~\ref{sec:numerics}\\
+$q_n^{[K]}$ & survival probability of the truncated recursion & Section~\ref{sec:numerics}\\
+$S,\nu_n,\widehat q_n$ & scale, computed law, its survival probability & Section~\ref{sec:numerics}\\
+$D,E_n,M_n$ & transport distance and its bounds & Section~\ref{sec:numerics}\\
+$\le_{\mathrm{st}}$ & stochastic order & Section~\ref{sec:intro}\\
+$\mathcal L(X)$, $\mathbf 1_E$ & law of $X$, indicator of $E$ & Section~\ref{sec:intro}\\
+$r$ & order of a tilted moment $\EE[X_0^rm^{X_0}]$ & Section~\ref{sec:intro}\\
+$\zeta$, $\Li_b$ & Riemann zeta function, polylogarithm & Theorem~\ref{thm:power}\\
+$\eta$, $N$ & margin and threshold in a barrier argument & proof of Lemma~\ref{lem:barrier}\\
+$\mu,\nu$ & laws on $\mathbb Z_+$ & Section~\ref{sec:intro}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{99}
+\bibitem{CDDHLS} X.~Chen, V.~Dagard, B.~Derrida, Y.~Hu, M.~Lifshits and Z.~Shi, \emph{The Derrida--Retaux conjecture on recursive models}, Ann. Probab. \textbf{49} (2021), 637--670, doi:10.1214/20-AOP1457, arXiv:1907.01601.
+\bibitem{CDHLS} X.~Chen, B.~Derrida, Y.~Hu, M.~Lifshits and Z.~Shi, \emph{A max-type recursive model: some properties and open questions}, in: Sojourns in Probability Theory and Statistical Physics III, Springer Proc. Math. Stat., Springer, Singapore, 2019, 166--186, doi:10.1007/978-981-15-0302-3\_6, arXiv:1705.04787.
+\bibitem{CHS22} X.~Chen, Y.~Hu and Z.~Shi, \emph{The sustainability probability for the critical Derrida--Retaux model}, Probab. Theory Related Fields \textbf{182} (2022), 641--684, doi:10.1007/s00440-021-01091-z, arXiv:2108.05610.
+\bibitem{CHS24} X.~Chen, Y.~Hu and Z.~Shi, \emph{The dual Derrida--Retaux conjecture}, Stochastic Process. Appl. \textbf{171} (2024), 104332, doi:10.1016/j.spa.2024.104332, arXiv:2306.12717.
+\bibitem{CS} X.~Chen and Z.~Shi, \emph{The stable Derrida--Retaux system at criticality}, in: In and Out of Equilibrium 3, Progr. Probab. \textbf{77}, Birkh\"auser, Cham, 2021, 239--264, doi:10.1007/978-3-030-60754-8\_12, arXiv:2006.06140.
+\bibitem{CEGM} P.~Collet, J.-P.~Eckmann, V.~Glaser and A.~Martin, \emph{Study of the iterations of a mapping associated to a spin glass model}, Comm. Math. Phys. \textbf{94} (1984), 353--370, doi:10.1007/BF01224830.
+\bibitem{DR} B.~Derrida and M.~Retaux, \emph{The depinning transition in presence of disorder: a toy model}, J. Stat. Phys. \textbf{156} (2014), 268--290, doi:10.1007/s10955-014-1006-y, arXiv:1401.6919.
+\bibitem{DS} B.~Derrida and Z.~Shi, \emph{Results and conjectures on a toy model of depinning}, Mosc. Math. J. \textbf{20} (2020), 695--709, doi:10.17323/1609-4514-2020-20-4-695-709, arXiv:2005.10208.
+\bibitem{HS} Y.~Hu and Z.~Shi, \emph{The free energy in the Derrida--Retaux recursive model}, J. Stat. Phys. \textbf{172} (2018), 718--741, doi:10.1007/s10955-018-2066-1, arXiv:1705.03792.
+\bibitem{LZ} Z.~Li and R.~Zhang, \emph{Asymptotic behavior of the generalized Derrida--Retaux recursive model}, J. Stat. Phys. \textbf{192} (2025), 98, doi:10.1007/s10955-025-03480-3, arXiv:2411.13068.
+\bibitem{Sh} Y.~Shmalo, \emph{The survival probability of a heavy-tailed critical Derrida--Retaux system}, 2026, \url{https://github.com/yspennstate/derrida-retaux-critical-survival/tree/97411ebb1db38c794668b159ec1d5078aec76dc1}.
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}, doi:10.5281/zenodo.24150837.
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
+\end{thebibliography}
+\end{document}
