@@ -405,22 +405,23 @@ The paper is part of the Math Brain project, whose public repository is given in
 \toprule
 Symbol & Meaning & Introduced\\
 \midrule
-$m$ & number of copies in~\eqref{eq:rec} & Section~\ref{sec:intro}\\
+$m$ & number of copies in the recursion & Section~\ref{sec:intro}\\
+$n$ & generation & Section~\ref{sec:intro}\\
+$j,k$ & integer indices & Section~\ref{sec:intro}\\
 $q_n$ & survival probability $\PP(X_n>0)$ & Section~\ref{sec:intro}\\
 $G_n(s)$ & generating function $\EE[s^{X_n}]$ & Section~\ref{sec:intro}\\
 $u_n$ & $G_n(m)-1$ & Section~\ref{sec:intro}\\
 $\Pi_n$ & $\prod_{j<n}G_j(m)^{m-1}$ & Section~\ref{sec:intro}\\
-$k_j,a_j,A,T,c$ & parameters of the sparse law & Theorem~\ref{thm:sparse}\\
-$n_j$ & depth $k_j-1$ & Theorem~\ref{thm:sparse}\\
+$a_j,k_j,n_j,A,T,c$ & parameters of the sparse law, $n_j=k_j-1$ & Theorem~\ref{thm:sparse}\\
 $\rho$ & tail exponent of the sparse law & Theorem~\ref{thm:sparse}\\
 $\beta$ & growth exponent of $\Pi_n$ & Theorem~\ref{thm:constraint}\\
-$b,L_b,A_b,c_b$ & parameters of the power-tail law & Theorem~\ref{thm:power}\\
-$H,d_n$ & terms of the recursion~\eqref{eq:ufix} & Section~\ref{sec:gf}\\
+$b,L_b,A_b,c_b$ & parameters of the power-tail law & Section~\ref{sec:intro}\\
+$H,d_n$ & terms of the identity for $u_{n+1}$ & Section~\ref{sec:intro}\\
 $\alpha$ & $(m-1)/2$ & Lemma~\ref{lem:barrier}\\
 $w_n,R_n$ & barrier $A/n$ and its defect & proof of Lemma~\ref{lem:barrier}\\
 $C_\beta,A_\beta$ & constants in the proof of Theorem~\ref{thm:constraint} & Section~\ref{sec:proofs}\\
-$K$ & support cutoff & Section~\ref{sec:numerics}\\
-$q_n^{[K]}$ & survival probability of the truncated recursion & Section~\ref{sec:numerics}\\
+$K,q_n^{[K]}$ & support cutoff, survival probability of the truncated recursion & Section~\ref{sec:numerics}\\
+$F$ & one step of the recursion on laws & proof of Lemma~\ref{lem:order}\\
 $S,\nu_n,\widehat q_n$ & scale, computed law, its survival probability & Section~\ref{sec:numerics}\\
 $D,E_n,M_n$ & transport distance and its bounds & Section~\ref{sec:numerics}\\
 $\le_{\mathrm{st}}$ & stochastic order & Section~\ref{sec:intro}\\
