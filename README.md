@@ -1,12 +1,12 @@
-# Critical Derrida–Retaux recursions with a different survival constant
+# Critical Derrida–Retaux recursions with nonuniversal survival probabilities
 
 Paper, programs and data for
 
-> Y. Shmalo, *Critical Derrida–Retaux recursions with a different survival constant*, November 2026.
+> Y. Shmalo, *Critical Derrida–Retaux recursions with nonuniversal survival probabilities*, November 2026.
 
 For an integer m ≥ 2 the Derrida–Retaux recursion is X_{n+1} = (X_n^{(1)} + … + X_n^{(m)} − 1)^+, and the initial law is critical when (m−1) E[X_0 m^{X_0}] = E[m^{X_0}] < ∞. The conjectured asymptotic is n² P(X_n > 0) → 4/(m−1)². The paper shows:
 
-- **Theorem 1.1.** For every m ≥ 2 there is a nonconstant critical law with lim sup n² P(X_n > 0) = ∞, with a finite tilted moment E[X_0^r m^{X_0}] of any prescribed order r < 2.
+- **Theorem 1.1.** For every m ≥ 2 there is a nonconstant critical law with lim sup n² P(X_n > 0) = ∞, with a finite tilted moment E[X_0^r m^{X_0}] of any prescribed order 0 < r < 2.
 - **Theorem 1.2.** If G_n(m) → 1 and log Π_n / log n → β ∈ (0, ∞), then lim inf n² q_n ≤ β(β+2)/(2(m−1)²) ≤ lim sup n² q_n.
 - **Theorem 1.3.** For the critical laws with P(X_0 = k) proportional to m^{−k} k^{−b}, 2 < b < 4, the bracket is b(b−2)/(2(m−1)²), which is below 4/(m−1)².
 - **Corollary 1.4.** Under a finite third tilted moment the only possible limit is 4/(m−1)². Whether the limit exists in that case is open.
